@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход Админа</title>
+</head>
+<body>
+
+    <h1>Консоль Администратора: {{ user.get_full_name|default:user.username }}</h1>
+    <p>Полный доступ к системе разрешен.</p>
+    <a href="{% url 'logout' %}">Выйти</a>
+</body>
+</html>

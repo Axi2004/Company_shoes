@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Добро пожаловать, {{ user.get_full_name|default:user.username }}</h1>
+
+    {% if user.role == 'admin' %}
+        <p>Вы вошли как Администратор</p>
+    {% elif user.role == 'manager' %}
+        <p>Вы вошли как Менеджер</p>
+    {% else %}
+        <p>Вы вошли как Клиент</p>
+    {% endif %}
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Выйти</button>
+    </form>
+</body>
+</html>
