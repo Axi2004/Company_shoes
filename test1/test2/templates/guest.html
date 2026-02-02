@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Список товаров</title>
+
+<style>
+.product-row {
+    display: flex;
+    border: 2px solid black;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Фото */
+.product-photo {
+    width: 160px;
+    border-right: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-photo img {
+    width: 120px;
+}
+
+/* Центр */
+.product-info {
+    flex: 1;
+    padding: 10px;
+    border-right: 2px solid black;
+}
+
+.product-title {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+/* Скидка */
+.product-discount {
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Условия */
+.big-discount {
+    background-color: #2E8B57;
+}
+
+.no-stock {
+    background-color: #87CEEB;
+}
+
+.old-price {
+    color: red;
+    text-decoration: line-through;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Список товаров в режиме гостя</h2>
+<a href="{% url 'logout' %}">Назад</a>
+
+{% for product in products %}
+<div class="product-row
+    {% if product.discount > 15 %}big-discount{% endif %}
+    {% if product.stock == 0 %}no-stock{% endif %}
+">
+
+    <!-- Фото -->
+    <div class="product-photo">
+        <img src="{% static 'img/'|add:product.image_path %}" alt="Фото">
+    </div>
+
+    <!-- Информация -->
+    <div class="product-info">
+        <div class="product-title">
+            {{ product.category.name }} | {{ product.name }}
+        </div>
+
+        Описание: {{ product.description }}<br>
+        Производитель: {{ product.manufacturer.name }}<br>
+        Поставщик: {{ product.supplier.name }}<br>
+
+        Цена:
+        {% if product.discount > 0 %}
+            <span class="old-price">{{ product.price }} ₽</span>
+            {{ product.price|floatformat:2|add:""|floatformat }}
+        {% else %}
+            {{ product.price }} ₽
+        {% endif %}
+        <br>
+
+        Единица измерения: {{ product.unit }}<br>
+        Количество на складе: {{ product.stock }}
+    </div>
+
+    <!-- Скидка -->
+    <div class="product-discount">
+        Действующая<br>скидка<br>
+        {{ product.discount }}%
+    </div>
+
+</div>
+{% empty %}
+<p>Товары отсутствуют</p>
+{% endfor %}
+
+</body>
+</html>

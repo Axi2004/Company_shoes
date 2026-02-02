@@ -27,4 +27,5 @@ urlpatterns = [
     path('client/', views.client, name='client'),
     path('manager/', views.manager, name='manager'),
     path('admin-panel/', views.admin, name='admin'),
+    path('guest/', views.guest, name='guest'),
 ]

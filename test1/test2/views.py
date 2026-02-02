@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.shortcuts import render, redirect
+from .models import Product
 
 def home(request):
     return render(request, 'home.html')
@@ -35,3 +36,7 @@ def admin(request):
 
 def manager(request):
     return render(request, 'manager.html')
+
+def guest(request):
+    products = Product.objects.select_related('category', 'supplier', 'manufacturer').all()
+    return render(request, 'guest.html', {'products': products})

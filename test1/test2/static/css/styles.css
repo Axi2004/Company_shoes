@@ -1,0 +1,46 @@
+.product-row {
+    display: flex;
+    border: 2px solid black;
+    width: 800px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.product-photo {
+    width: 150px;
+    border-right: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-photo img {
+    width: 100px;
+    height: auto;
+}
+
+.product-info {
+    flex: 1;
+    padding: 10px;
+    border-right: 2px solid black;
+}
+
+.product-title {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.product-text {
+    line-height: 1.5;
+}
+
+.product-discount {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+}
