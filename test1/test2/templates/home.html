@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,6 +7,8 @@
     <title>Главная</title>
 </head>
 <body>
+    <img src="{% static 'img/Icon.JPG' %}" alt="Company Logo">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <h1>Добро пожаловать, {{ user.get_full_name|default:user.username }}</h1>
 
     {% if user.role == 'admin' %}
@@ -19,5 +23,7 @@
         {% csrf_token %}
         <button type="submit">Выйти</button>
     </form>
+
+
 </body>
 </html>

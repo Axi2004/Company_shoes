@@ -44,3 +44,31 @@
     font-weight: bold;
     text-align: center;
 }
+
+body {
+    font-family: "Times New Roman", Times, serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header img {
+    max-height: 80px;
+}
+
+.btn-accent {
+    background: #00FA9A;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.secondary-bg {
+    background: #7FFF00;
+}
+
+.discount-big {
+    background: #2E8B57;
+    color: white;
+}
